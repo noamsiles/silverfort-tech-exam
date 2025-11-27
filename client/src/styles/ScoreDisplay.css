@@ -1,0 +1,13 @@
+.score-display {
+    font-size: 20px;
+  }
+  
+  .score-label, .score-value {
+    margin-right: 8px;
+  }
+  
+  .game-over-text {
+    color: red;
+    font-weight: bold;
+  }
+  

@@ -1,0 +1,10 @@
+.cell {
+    width: 60px;
+    height: 60px;
+    background: #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  
