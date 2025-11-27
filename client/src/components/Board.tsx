@@ -1,8 +1,8 @@
 import "../styles/Board.css";
-import Cell from "./Cell";
 import type { BoardProps } from "../types/props";
+import Cell from "./Cell";
 
-const Board = ({ board }: BoardProps) => {
+const Board = ({ board, sendMessage }: BoardProps) => {
   return (
     <div className="board">
       {board.map((row, r) => (
@@ -12,6 +12,9 @@ const Board = ({ board }: BoardProps) => {
               key={`${r}-${c}`}
               shape={cell.shape}
               color={cell.color}
+              row={r}
+              col={c}
+              sendMessage={sendMessage}
             />
           ))}
         </div>
@@ -20,4 +23,4 @@ const Board = ({ board }: BoardProps) => {
   );
 };
 
-export default Board;
+export default Board

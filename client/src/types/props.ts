@@ -1,28 +1,24 @@
-export type ShapeRendererProps = {
-    shape: string;
-    color: string;
-}
+import type { CellData } from "./logic-components";
+
+export type BoardProps = {
+    board: CellData[][];
+    sendMessage: (msg: any) => void;
+  };
 
 export type CellProps = {
     shape: string;
     color: string;
-}
-
-export type BoardProps = {
-    board: CellProps[][];
-}
+    row: number;
+    col: number;
+    sendMessage: (msg: any) => void;
+  };
 
 export type ScoreDisplayProps = {
     score: number;
     gameOver: boolean;
-};
+  };
 
-export type CooldownOverlayProps = {
-    value: number;
-};
-
-export type AppProps = {
-    board: CellProps[][];
-    score: number;
-    gameOver: boolean;
-};
+export type ShapeRendererProps = {
+    shape: string;
+    color: string;
+  }

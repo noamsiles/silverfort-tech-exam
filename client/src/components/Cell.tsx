@@ -1,11 +1,21 @@
 import "../styles/Cell.css";
-
-import ShapeRenderer from "./ShapeRenderer";
 import type { CellProps } from "../types/props";
 
-const Cell = ({ shape, color }: CellProps) => {
+import ShapeRenderer from "./ShapeRenderer";
+
+const Cell = ({ shape, color, row, col, sendMessage }: CellProps) => {
+  const handleClick = () => {
+    console.log("CELL CLICKED:", row, col);
+
+    sendMessage({
+      type: "cell:click",
+      row,
+      col,
+    });
+  };
+
   return (
-    <div className="cell">
+    <div className="cell" onClick={handleClick}>
       <ShapeRenderer shape={shape} color={color} />
     </div>
   );
