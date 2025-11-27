@@ -1,5 +1,5 @@
 import "../styles/ShapeRenderer.css";
-import type { ShapeRendererProps } from "../types/props";
+import type { ShapeRendererProps } from "../src/types/props";
 
 const ShapeRenderer = ({ shape, color }: ShapeRendererProps) => {
   const renderShape = () => {

@@ -1,5 +1,5 @@
 import "../styles/Board.css";
-import type { BoardProps } from "../types/props";
+import type { BoardProps } from "../src/types/props";
 import Cell from "./Cell";
 
 const Board = ({ board, sendMessage }: BoardProps) => {

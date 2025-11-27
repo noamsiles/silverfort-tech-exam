@@ -1,5 +1,5 @@
 import "../styles/Cell.css";
-import type { CellProps } from "../types/props";
+import type { CellProps } from "../src/types/props";
 
 import ShapeRenderer from "./ShapeRenderer";
 

@@ -1,5 +1,5 @@
 import "../styles/ScoreDisplay.css";
-import type { ScoreDisplayProps } from "../types/props";
+import type { ScoreDisplayProps } from "../src/types/props";
 
 export default function ScoreDisplay({ score, gameOver }: ScoreDisplayProps) {
   return (

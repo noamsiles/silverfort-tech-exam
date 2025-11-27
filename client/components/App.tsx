@@ -3,7 +3,7 @@ import '../styles/App.css'
 import ScoreDisplay from "./ScoreDisplay";
 import Board from "./Board";
 import { useEffect, useRef, useState } from 'react';
-import type { GameState } from '../types/logic-components';
+import type { GameState } from '../src/types/logic-components';
 
 const App = () => {
   const [gameState, setGameState] = useState<GameState | null>(null);
