@@ -1,6 +1,6 @@
 import { tickCooldowns } from "./game/cooldown";
-import { findValidRandomCombination } from "./game/moveLogic";
-import { gameState } from "./game/state";
+import { findValidRandomCombination } from "./game/move-logic";
+import { gameState, resetGame } from "./game/state";
 import { clients } from "../routes/socket";
 import logger from "../utils/logger";
 
@@ -17,23 +17,21 @@ const handleReq = (data: Buffer) => {
 
     const { row, col } = msg;
 
-    if (gameState.gameOver) return;
+    if (gameState.gameOver) {
+      resetGame()
+      broadcast("game:update", gameState);
+      return
+    };
 
     const cell = gameState.board[row]![col];
 
     if (cell!.cooldown > 0) return;
 
-    const replacement = findValidRandomCombination(gameState.board, row, col);
-
-    if (!replacement) {
-      gameState.gameOver = true;
-      broadcast("game:update", gameState);
-      return;
-    }
+    const { shape, color } = findValidRandomCombination(gameState.board, row, col);
 
     // Apply the move
-    cell!.shape = replacement.shape;
-    cell!.color = replacement.color;
+    cell!.shape = shape;
+    cell!.color = color;
 
     // Apply cooldown (spec requires 3 turns)
     cell!.cooldown = 3;
@@ -52,7 +50,7 @@ const handleReq = (data: Buffer) => {
   }
 }
 
-function broadcast(type: string, data: any) {
+export const broadcast = (type: string, data: any) => {
   const message = JSON.stringify({ type, data });
 
   for (const client of clients) {

@@ -1,5 +1,5 @@
 import { GameState } from "../../types/components";
-import { generateBoard } from "./generateBoard";
+import { generateBoard } from "./generate-board";
 
 export let gameState: GameState = {
   board: generateBoard(),

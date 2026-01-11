@@ -4,6 +4,7 @@ import ScoreDisplay from "./ScoreDisplay";
 import Board from "./Board";
 import { useEffect, useRef, useState } from 'react';
 import type { GameState } from '../src/types/logic-components';
+import config from '../src/config';
 
 const App = () => {
   const [gameState, setGameState] = useState<GameState | null>(null);
@@ -12,7 +13,7 @@ const App = () => {
   const ws = useRef<WebSocket | null>(null);
 
   useEffect(() => {
-    const socket = new WebSocket("ws://localhost:3000/ws");
+    const socket = new WebSocket(config.url);
     ws.current = socket;
 
     socket.onopen = () => {
